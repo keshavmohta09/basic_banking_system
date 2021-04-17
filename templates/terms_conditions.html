@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/style_terms_conditions.css' %}">
+{% endblock %}
+
+{% block header_active %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="{% url 'transaction_history' page_num=1 %}">Transactions</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li class="active" ><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="title">
+            <h1>Terms & Conditions</h1>
+        </div>
+        <ol type="i">
+            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla ipsum numquam quam magnam, praesentium nihil eum hwihanxcs wefeyug kjbfjdsb bjbdkbweebc dskjb sbkdwcj kfhweod.</li>
+            <li>Impedit odit accusantium temporibus? Aut doloremque quasi excepturi eius repellendus quos ea cum placeat, djbiwsbax wdbscbm zkjnfijhid dvbfkjdx, bkgrjgnihdc djfbidbx dihbkcjbdfbd  jebfdnk cvijb.</li>
+            <li>Similique perspiciatis ipsam eveniet, dolores blanditiis necessitatibus quia, alias corrupti deserunt inventore jhdgfes jhdsbfbiwesb dwdhdsc weahhwod  qhwiqhe cdifhesd  dbiaxnz cidsa iweahisdc.</li>
+            <li>Laboriosam cumque minima officia consequatur nulla odio! Molestias ipsa laudantium ut reiciendis deleniti, ab jsgsiagd jjwug. Aweegwu jsag owuw kjwdqhierf gtvcj xkjnjhishqw ajsosuwq iqwiyij.</li>
+            <li>Iste cupiditate nisi non dolorum. Sint recusandae facilis sunt labore aliquam nisi porro praesentium debitis qhwieds  isshdisx cbijdsx kdibeehfdc jdbiehd qiwh sdiwjxk hwidx jwgdwusb kwqhas wehuhd  cjwdisx vjbigdc  kjwbiquhax  weiuwh.</li>
+            <li>Doloremque suscipit! Nihil suscipit eveniet sit id natus a. Enim nam repudiandae rerum iure sit repellendus reiciendis maxime aperiam, porro rem facilis</li>
+            <li>Sint praesentium fugit beatae voluptate incidunt, necessitatibus iste vero. Ducimus id enim neque, autem efedjcnx, kjwekes wwddisadhx doloremque blanditiis nostrum voluptate deserunt.</li>
+            <li>Laudantium qui iure voluptate reiciendis iste dolorem molestias aperiam repellendus, laborum nostrum squhueywew jwguw nvbjhbxxgu vxyfdvf hdwuedsjbdwbwih hwuyeyrqw quibusdam.</li>
+            <li>Dicta sunt placeat! Blanditiis amet labore sapiente quod. Et, optio reiciendis maxime aperiam, porro rem facilis egraiweds xxcisa xvcuqha. Gjhigdwu ksoo grip the sparks foundation.</li>
+            <li>Fugiat vel assumenda tempore eveniet? Illo expedita eos doloremque blanditiis nostrum voluptate deserunt. Atque, ywqb xgsasbaz qwt aftre bhjdtsy authords nkjdfkjkn nkdhihs.</li>
+            <li>Fugit. Aperiam debitis aspernatur esse animi fugiat, ratione deleniti voluptate ullam dicta, optio modi. Grip The S[arks Fpundation.</li>
+            <li>Asperiores exercitationem? Mollitia repudiandae iusto est possimus voluptatem, accusamus minus dicta vitae, ifidh shsoij kjsoaj qwuyq tryjic hsgx nmzhs.</li>
+        </ol>
+    </div>
+{% endblock %}

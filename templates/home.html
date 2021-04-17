@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/style_home.css' %}">
+{% endblock %}
+
+{% block header_active %}
+<ul>
+    <li class="active"><a href="/">Home</a></li>
+    <li><a href="{% url 'transaction_history' page_num=1 %}">Transactions</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="title">
+            <h1>Welcome to TSF Bank</h1>
+        </div>
+        <div class="quote">
+            <p>“Banking is necessary.”</p>
+        </div>
+        <img src="{% static 'bank_icon.png' %}" class="bank_icon" width="260" height="280">
+        <div>
+            <a href="{% url 'users_list' %}" class="btn1">Customers</a>
+            <a href="{% url 'users_list' %}" class="btn1_logo">
+                <img src="{% static 'customers_logo.png' %}" width="220" height="150">
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'transaction_history' page_num=1 %}" class="btn2">Transactions</a>
+            <a href="{% url 'transaction_history' page_num=1 %}" class="btn2_logo">
+                <img src="{% static 'transaction_history_logo.png' %}" width="215" height="150">
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'transfer_money' %}" class="btn3">Make Transaction</a>
+            <a href="{% url 'transfer_money' %}" class="btn3_logo">
+                <img src="{% static 'transfer_money_logo.png' %}" width="220" height="150">
+            </a>
+        </div>
+    </div>
+{% endblock %}
+    {% comment %} <hr>
+    <footer>
+        <br>
+        <p class="p1">© 2021. Made by <b>Keshav Mohta</b></p><br>
+        <p class="p2">For GRIP APRIL 2021. The Sparks Foundation.</p>
+    </footer> {% endcomment %}
+{% comment %} </body>
+</html> {% endcomment %}

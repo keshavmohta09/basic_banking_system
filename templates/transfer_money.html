@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/style_transfer_money.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="main">
+        <form action="{% url 'transfer_money' %}" method="POST">
+        {% csrf_token %}
+        <div class="form_details">
+            <br><br><br><br><br>
+            <label for="sender">Sender's account number : </label>
+            <select name="sender" id="sender">
+                {% for c in customers %}
+                <option value="{{c.id}}"> {{c.account_no}} ({{c.name}})</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="sender_ifsc_code">IFSC no : </label>
+            <select id="sender_ifsc_code" name="sender_ifsc_code">
+                {% for ifsc in ifsc_codes %}
+                <option value="{{ifsc}}">{{ifsc}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="receiver">Receiver's account no : </label>
+            <select name="receiver" id="receiver">
+                {% for c in customers %}
+                <option value="{{c.id}}">{{c.account_no}} ({{c.name}})</option>
+                {% endfor %}
+            </select>
+            <label for="receiver_ifsc_code">IFSC no : </label>
+            <select id="receiver_ifsc_code" name="receiver_ifsc_code">
+                {% for ifsc in ifsc_codes %}
+                <option value="{{ifsc}}">{{ifsc}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="amount">Amount : </label>
+            <input type="number" id="amount" name="amount" placeholder="10000">
+            <br><br>
+            <div class="button">
+                <button class="btn1" type="submit">Transfer</button><button class="btn2" type="reset">Reset</button>
+            </div>
+        </div>
+        </form><br>
+    </div>
+    <span class="message">
+        {% for m in messages %}
+        <h3>{{m}}</h3>
+        {% endfor %}
+    </span>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/style_customer_detail.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="main">
+        <div class="basic_details">
+            <p> Name : {{customer.name}} <br>
+             Account Number : {{customer.account_no}} <br>
+             Email : {{customer.email}} <br>
+             Contact Number : {{customer.mobile_no}} <br>
+             Balance : {{customer.balance}} ₹ <br>
+             IFSC Code : {{customer.ifsc_code}} <br>
+             Aadhar Number : {{customer.aadhar_number}} <br>
+             Address : {{customer.address}} <br>
+             Active Status : {{customer.is_active}} </p>
+        </div>
+
+        <form action="{% url 'customer_detail' id=customer.id %}" method="POST">
+        {% csrf_token %}
+            <div class="form_details">
+                <label for="sender">Sender's account number : </label>
+                <select name="sender" id="sender">
+                    <option value="{{customer.id}}">{{customer.account_no}} ({{customer.name}})</option>
+                </select><br>
+                <label for="receiver">Receiver's account number : </label>
+                <select name="receiver" id="receiver">
+                {% for c in customers %}
+                {% if c.id != customer.id %}
+                <option value="{{c.id}}">{{c.account_no}} ({{c.name}})</option>
+                {% endif %}
+                {% endfor %}
+                </select><br>
+                <label for="receiver_ifsc_code">IFSC no : </label>
+                <select id="receiver_ifsc_code" name="receiver_ifsc_code">
+                    {% for ifsc in ifsc_codes %}
+                    <option value="{{ifsc}}">{{ifsc}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <label for="amount">Amount : </label><br>
+                <input type="number" id="amount" name="amount" placeholder="10000"><br><br>
+                <div class="button">
+                    <button class="btn1" type="submit">Transfer</button><button class="btn2" type="reset">Reset</button>
+                </div>
+            </div>
+        </form><br>
+        <span class="message">
+            {% for m in messages %}
+            <h3>{{m}}</h3>
+            {% endfor %}
+        </span>
+    </div>
+{% endblock %}

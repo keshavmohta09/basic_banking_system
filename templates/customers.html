@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/style_customers.css' %}"
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Account no.</th>
+                <th>Email</th>
+                <th>Balance</th>
+                <th>View</th>
+            </tr>
+            {% for l in customers %}
+            <tr>
+                <td>{{l.id}}</td>
+                <td>{{l.name}}</td>
+                <td>{{l.account_no}}</td>
+                <td>{{l.email}}</td>
+                <td>{{l.balance}}</td>
+                <td class="button">
+                    <a class="btn" href="/customer_detail/{{l.id}}">Click me</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

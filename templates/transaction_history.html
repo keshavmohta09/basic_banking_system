@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/style_transactions.css' %}">
+{% endblock %}
+
+{% block header_active %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li class="active" ><a href="{% url 'transaction_history' page_num=1 %}">Transactions</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <table>
+            <tr>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Amount (₹)</th>
+                <th>Date & Time</th>
+            </tr>
+            {% for t in transactions %}
+            <tr>
+                <td>{{t.sender.name}}</td>
+                <td>{{t.receiver.name}}</td>
+                <td>{{t.balance}}</td>
+                <td>{{t.created_at}}</td>
+            </tr>
+            {% endfor %}
+            <div class="button">
+                {% if page_count > page_num %}
+                <a href="{% url 'transaction_history' page_num=next %}" class="btn1">Next</a>
+                {% endif %}
+                {% if page_num > 1 %}
+                <a href="{% url 'transaction_history' page_num=previous %}" class="btn2" >Previous</a>
+                {% endif %}
+            </div>
+        </table>
+    </div>
+{% endblock %}

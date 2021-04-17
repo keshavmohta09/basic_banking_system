@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/style_about.css' %}"
+{% endblock %}
+
+{% block header_active %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="{% url 'transaction_history' page_num=1 %}">Transactions</a></li>
+    <li class="active"><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="title">
+            <h1>About</h1>
+        </div>
+        <div class="about_content">
+            <p>This is a basic banking system website created by Keshav Mohta.</p><br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga pariatur incidunt eveniet officiis
+                molestias provident tempora itaque maxime quia qui soluta velit deserunt mollitia, vel nesciunt modi
+                necessitatibus blanditiis doloremque fugit consequatur. Nihil repudiandae labore commodi fugiat magnam
+                cupiditate accusantium reiciendis quis error officiis dolor sapiente veniam, exercitationem eveniet
+                ullam nam velit voluptatibus sequi consequuntur? Nihil neque vel autem deserunt perferendis consequuntur
+                tempore dicta, mollitia nemo ipsa voluptates aut tenetur fugit voluptas saepe qui pariatur minus
+                explicabo quaerat earum! Quisquam, assumenda debitis. Repudiandae aperiam explicabo qui delectus
+                officia, quasi similique rerum dignissimos eos corrupti beatae voluptatum assumenda! Nobis, ipsam!
+                Voluptatum dolorem ipsam sequi error, itaque hic ipsa odio assumenda, sit vero optio minima ea animi
+                aliquam? Illum velit voluptatum nam dolores, repellat perferendis ratione voluptas a molestiae omnis
+                suscipit beatae officia soluta. Placeat nostrum alias maiores, quia eos, nulla expedita deserunt
+                voluptatibus aliquid sequi non eligendi dolor odio delectus pariatur, excepturi blanditiis. Quia amet
+                tempora dolorum unde atque cum quae officia id corporis. At laborum earum quo odit quaerat quas.
+                Repudiandae repellendus pariatur id unde fuga, eaque quod eius libero distinctio odit accusantium
+                numquam, suscipit qui quaerat beatae asperiores aliquam, tenetur ducimus neque minima deserunt corrupti!
+                Possimus distinctio velit autem asperiores ab odit repellendus dolorem ipsum, mollitia sed quis. Optio
+                reiciendis quis provident, quo iste dolore natus deleniti.</p>
+        </div>
+    </div>
+{% endblock %}

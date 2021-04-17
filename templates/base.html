@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'TSF_logo.png' %}">
+    <title>TSF Bank</title>
+    {% block css_file %}
+    {% endblock %}
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="{% static 'TSF_logo.png' %}" width="120" height="120">
+        </div>
+        {% block header_active %}
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'transaction_history' page_num=1 %}">Transactions</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
+            </ul>
+        {% endblock %}
+    </header>
+    {% block content %}
+    {% endblock %}
+    <hr>
+    <footer>
+        <br>
+        <p class="p1">© 2021. Made by <b>Keshav Mohta</b></p><br>
+        <p class="p2">For GRIP APRIL 2021. The Sparks Foundation.</p>
+    </footer>
+
+</body>
