@@ -82,10 +82,17 @@ WSGI_APPLICATION = 'TSF_Bank_System.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': env.db(),
-    'extra':env.db('MYSQL_URL')
-}
+try:
+    DATABASES = {
+        'default': env.db()
+    }
+except Exception:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
