@@ -46,7 +46,6 @@ ul li a:hover{
 }
 
 table{
-    /* border-collapse:initial; */
     width: 50%;
     position: absolute;
     top: 20%;
