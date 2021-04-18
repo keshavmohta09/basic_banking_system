@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Century Gothic;
+    box-sizing: border-box;
+}
+
+.main{
+    height: 100vh;
+}
+
+ul{
+    float: right;
+    list-style-type: none;
+    margin-top: 25px;
+}
+
+ul li{
+    display: inline-block;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.5s ease;
+}
+
+ul li a:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.logo{
+    height: auto;
+    float: left;
+    width: 150px;
+}
+
+header{
+    max-width: 100%;
+    margin: auto;
+    position: fixed;
+    width: 100%;
+    background-color: rgb(61, 56, 56);
+}
+
+.form_details{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: transparent;
+}
+
+select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 17px;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 17px;
+}
+  
+label{
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-size: 20px;
+    color: rgb(61, 56, 56);
+}
+  
+input[type=submit]{
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 4px;
+}
+  
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.button{
+    padding: 10px 160px;
+}
+
+.btn1{
+    border: 1px solid rgb(61, 56, 56);
+    background-color: rgb(61, 56, 56);
+    text-decoration: none;
+    padding: 10px 90px;
+    color: #fff;
+    transition: 0.5s ease;
+}
+
+.btn2{
+    border: 1px solid rgb(61, 56, 56);
+    background-color: rgb(61, 56, 56);
+    text-decoration: none;
+    padding: 10px 95px;
+    color: #fff;
+    transition: 0.5s ease;
+}
+
+.btn1:hover, .btn2:hover{
+    background-color: #fff;
+    color: rgb(61, 56, 56);
+}
+
+.message h3{
+    color: red;
+}
+
+span{
+    position: absolute;
+    top: 90%;
+    left: 70%;
+}
+
+footer{
+    background-color: rgb(61, 56, 56);
+    color: #fff;
+    height: 70px;
+}
+
+footer .p1{
+    position: absolute;
+    left: 42%;
+    color: #fff;
+}
+
+footer .p2{
+    position: absolute;
+    left: 39%;
+    color: #fff;
+}
