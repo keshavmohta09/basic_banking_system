@@ -33,56 +33,58 @@ def customer_list(request):
     return render(request,'customers.html',{'customers':customers})
 
 def transfer_amount(request):
-    if request.POST:
+    """
+    Used to transfer amount between users
+    """
+    if request.method=='GET':
+        customers = User.objects.all()
+        ifsc_codes = []
+        for c in customers:
+            if c.ifsc_code not in ifsc_codes:   ifsc_codes.append(c.ifsc_code)
+        return render(request,'transfer_money.html',{'customers':customers,'ifsc_codes':ifsc_codes})
+    else:
+        data = request.POST
+        sender = data.get('sender')
+        receiver = data.get('receiver')
+        amount = data.get('amount')
         try:
-            data = request.POST
-            sender = data['sender']
-            receiver = data['receiver']
-            amount = float(data['amount'])
-            sender_ifsc_code = data['sender_ifsc_code']
-            receiver_ifsc_code = data['receiver_ifsc_code']
-        except KeyError:
+            amount = float(data.get('amount'))
+            sender_ifsc_code = data.get('sender_ifsc_code')
+            receiver_ifsc_code = data.get('receiver_ifsc_code')
+        except:
             messages.info(request,"All fields are required.")
             return redirect('transfer_money')
             
+
         sender = User.objects.get(id=int(sender))
         receiver = User.objects.get(id=int(receiver))
         sender_ifsc = sender.ifsc_code
         receiver_ifsc = receiver.ifsc_code
-        is_valid = True
+
         if sender==receiver:
             messages.info(request,'Transaction can not possible between same users.')
-            is_valid = False
-           
+            return redirect('transfer_money')
         elif amount<=0:
             messages.info(request,'Amount can not be zero or negative.')
-            is_valid = False
-            
+            return redirect('transfer_money')
         elif (sender_ifsc_code!=sender_ifsc) or (receiver_ifsc_code!=receiver_ifsc):
             messages.info(request,"Incorrect IFSC number.")
-            is_valid = False
-           
+            return redirect('transfer_money')
         elif amount>sender.balance:
             messages.info(request,"Sender's account balance is less than amount")
-            is_valid = False
-            
-        if not is_valid:
-            return redirect("transfer_money")
-        
-        sender.balance = float(sender.balance)-amount
-        receiver.balance = float(receiver.balance)+amount
-        sender.save()
-        receiver.save()
-        Transaction.objects.create(sender=sender,receiver=receiver,balance=amount)
-        return HttpResponseRedirect(reverse('transaction_history',args=[1]))
-        
-    customers = User.objects.all()
-    ifsc_codes = []
-    for c in customers:
-        if c.ifsc_code not in ifsc_codes:   ifsc_codes.append(c.ifsc_code)
-    return render(request,'transfer_money.html',{'customers':customers,'ifsc_codes':ifsc_codes})
+            return redirect('transfer_money')
+        else:
+            sender.balance = float(sender.balance)-amount
+            receiver.balance = float(receiver.balance)+amount
+            sender.save()
+            receiver.save()
+            Transaction.objects.create(sender=sender,receiver=receiver,balance=amount)
+            return HttpResponseRedirect(reverse('transaction_history',args=[1]))
 
 def customer_detail(request,id):
+    """
+    Used to get customer detail
+    """
     if request.method=='GET':
         customer = User.objects.get(id=id)
         customers = User.objects.all()
@@ -124,7 +126,13 @@ def customer_detail(request,id):
 
 
 def about(request):
+    """
+    Used to get about system
+    """
     return render(request,'about.html')
 
 def terms_conditions(request):
+    """
+    Terms & Conditions
+    """
     return render(request,'terms_conditions.html')
