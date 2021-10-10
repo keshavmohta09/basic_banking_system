@@ -9,6 +9,9 @@ def home(request):
     return render(request,'home.html')
 
 def transaction_list(request,page_num):
+    """
+    Used to get transaction list
+    """
     transactions = Transaction.objects.all().order_by("-id")
     p = Paginator(transactions,15)
     page_count = p.count//15
